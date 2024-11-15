@@ -13,13 +13,13 @@ LoginDialog::LoginDialog(QWidget *parent, State *state_ptr) :
 }
 
 void LoginDialog::on_buttonBox_accepted() {
-  state_ptr->id = lineEdit_4->text();
-  state_ptr->workspace = lineEdit->text();
-  state_ptr->password = lineEdit_2->text();
-  state_ptr->serverurl = lineEdit_3->text();
+  state_ptr->id = username->text();
+  state_ptr->workspace = workspacename->text();
+  state_ptr->password = workspacekey->text();
+  state_ptr->serverurl = server->text();
   HttpClient *http_client = new HttpClient(this, &state_ptr->token, state_ptr->serverurl);
   QJsonObject logininfo;
-  logininfo["id"] = state_ptr->id;
+  logininfo["workspace"] = state_ptr->workspace;
   logininfo["password"] = state_ptr->password;
   QJsonDocument doc(logininfo);
   state_ptr->token = http_client->post(state_ptr->serverurl + "/login", doc.toJson());

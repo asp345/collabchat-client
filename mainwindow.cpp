@@ -127,5 +127,14 @@ void MainWindow::on_lineEdit_returnPressed() {
 }
 
 void MainWindow::on_viewAllDocsButton_clicked() {
-  state.date = QDate();
+  if (ui->calendarWidget->isEnabled()) {
+    state.date = QDate();
+    ui->calendarWidget->setDisabled(true);
+    ui->viewAllDocsButton->setText("List Documents by Date");
+  } else {
+    state.date = ui->calendarWidget->selectedDate();
+    ui->calendarWidget->setEnabled(true);
+    ui->viewAllDocsButton->setText("View All Documents");
+  }
+  pollData();
 }

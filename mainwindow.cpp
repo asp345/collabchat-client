@@ -85,9 +85,11 @@ void MainWindow::pollData() {
   onlineModel->setStringList(onlineList);
 }
 void MainWindow::on_sendButton_clicked() {
-  auto message = ui->lineEdit->text();
-  http_client->post(QUrl(state.serverurl + "/chat"), (state.id + " : " + message).toUtf8());
+  auto message = ui->lineEdit->text().trimmed();
+  if (message.isEmpty())
+    return;
   ui->lineEdit->clear();
+  http_client->post(QUrl(state.serverurl + "/chat"), (state.id + " : " + message).toUtf8());
 }
 
 void MainWindow::on_calendarWidget_selectionChanged() {

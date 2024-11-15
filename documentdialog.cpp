@@ -3,6 +3,7 @@
 DocumentDialog::DocumentDialog(QWidget *parent, QString id, QString title, QString content) :
     QDialog(parent) {
   setupUi(this);
+  setWindowTitle("Edit document");
   this->id = id;
   lineEdit->setText(title);
   textEdit->setText(content);

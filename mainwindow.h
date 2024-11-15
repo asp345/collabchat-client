@@ -38,6 +38,8 @@ private slots:
 
   void on_lineEdit_returnPressed();
 
+  void on_viewAllDocsButton_clicked();
+
 private:
   Ui::MainWindow *ui;
   void pollData();

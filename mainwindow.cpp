@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     http_client(new HttpClient(this, &state.token, state.serverurl)),
     timer(new QTimer(this)) {
+  setWindowTitle("Collabchat");
   LoginDialog dialog(this, &state);
   dialog.exec();
   ui->setupUi(this);
@@ -28,7 +29,11 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->docsListView->setModel(docsModel);
   ui->messagesListView->setModel(chatModel);
   ui->onlineUsersListView->setModel(onlineModel);
+  ui->docsListView->setEditTriggers(QListView::NoEditTriggers);
+  ui->messagesListView->setEditTriggers(QListView::NoEditTriggers);
+  ui->onlineUsersListView->setEditTriggers(QListView::NoEditTriggers);
   connect(ui->lineEdit, &QLineEdit::returnPressed, ui->sendButton, &QPushButton::click);
+  connect(ui->actionQuit, &QAction::triggered, &QApplication::quit);
 }
 
 MainWindow::~MainWindow() {
@@ -119,4 +124,8 @@ void MainWindow::onDialogDiscarded(QString id) {
 
 void MainWindow::on_lineEdit_returnPressed() {
   ui->sendButton->click();
+}
+
+void MainWindow::on_viewAllDocsButton_clicked() {
+  state.date = QDate();
 }

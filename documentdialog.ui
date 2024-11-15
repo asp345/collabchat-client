@@ -27,6 +27,13 @@
       <widget class="QLineEdit" name="lineEdit"/>
      </item>
      <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Content</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QTextEdit" name="textEdit"/>
      </item>
     </layout>

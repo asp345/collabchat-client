@@ -9,6 +9,7 @@
 LoginDialog::LoginDialog(QWidget *parent, State *state_ptr) :
     QDialog(parent), state_ptr(state_ptr) {
   setupUi(this);
+  setWindowTitle("Login to Collabchat");
 }
 
 void LoginDialog::on_buttonBox_accepted() {

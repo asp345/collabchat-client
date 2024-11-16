@@ -10,6 +10,7 @@ LoginDialog::LoginDialog(QWidget *parent, State *state_ptr) :
     QDialog(parent), state_ptr(state_ptr) {
   setupUi(this);
   setWindowTitle("Login to Collabchat");
+  workspacekey->setEchoMode(QLineEdit::Password);
 }
 
 void LoginDialog::on_buttonBox_accepted() {

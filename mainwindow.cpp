@@ -133,10 +133,12 @@ void MainWindow::on_viewAllDocsButton_clicked() {
     state.date = QDate();
     ui->calendarWidget->setDisabled(true);
     ui->viewAllDocsButton->setText("List Documents by Date");
+    ui->addDocButton->setText("Add Document without date");
   } else {
     state.date = ui->calendarWidget->selectedDate();
     ui->calendarWidget->setEnabled(true);
     ui->viewAllDocsButton->setText("View All Documents");
+    ui->addDocButton->setText("Add Document in " + ui->calendarWidget->selectedDate().toString());
   }
   pollData();
 }
